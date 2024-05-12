@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card } from 'react-bootstrap';
+import { Button, Card, Input, Label } from "reactstrap";
 
 
 export default class Login extends React.Component {
@@ -8,18 +8,17 @@ export default class Login extends React.Component {
     render() {
         return (
             <>
+                <div className="bg-dark text-bg-primary">
+                    <h1 className="ml-1">To-do</h1>
+                </div>
                 <div className="row conteiner vh-100">
+                    <div className="col-8 conteiner" id="bannerRotativo">
 
-                    <div className="col-8 vh-100 conteiner" id="bannerRotativo">
-                        <div className="text-center col-12">
-                            <h1 className="f1" id="tituloTodo">To-do</h1>
-                        </div>
-
-                        <div className="col-12 mt-4 border h-50" >
+                        <div className="col-12 align-middle border h-100 bg-primary" >
                             <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit ab magni sapiente, consequatur vel voluptate necessitatibus vero. Officia odit dolores, fugit vel sequi aut cumque id laboriosam soluta obcaecati deleniti!</h2>
                         </div>
                     </div>
-                    <div className="col conteiner d-flex align-items-center bg-dark">
+                    <div className="col conteiner d-flex align-items-center bg-secondary">
                         <Card className="col-10 container">
                             <form>
                                 {/* Titulo - Login*/}

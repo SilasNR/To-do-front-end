@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./App.js";
 import 'bootstrap/dist/css/bootstrap.css';
-import { Button, Card, Input, Label } from "reactstrap";
-import "./index.css";
+// import * as serviceWorker from './serviceWorker';
+// import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+// import Home from './pages/home.js';
+// import Sobre from './pages/Login.js';
+// import Contato from './pages/AreaProjetos.js';
 
-
-
-class App extends React.Component {
+class index extends React.Component {
   componentDidMount() {
 
   }
@@ -21,9 +23,9 @@ class App extends React.Component {
   render() {
 
     return (
-      <div>
-        
-      </div>
+      <>
+        <App/>
+      </>
     );
   }
 }
