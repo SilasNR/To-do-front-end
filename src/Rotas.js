@@ -1,19 +1,50 @@
-// import {createBrowserRouter} from 'react-router-dom';
-
-// import TelaInicial from './pages/home';
-
-// // import Login from './pages/Login';
-// // import AreaProjetos from './pages/AreaProjetos';
+import React from "react";
+import {createBrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom/dist";
 
 
-// import PgError from './pages/Login';
+import Home from "./pages/home";
+import Login from "./pages/Login";
+import AreaProjetos from "./pages/AreaProjetos";
 
-// const Rotas = createBrowserRouter([
-//     {
-//         path: "/",
-//         element: <TelaInicial/>,
-//         errorElement: <PgError/>
-//     }
-// ]);
+const Rotas = createBrowserRouter([
+    // {
+    //     path: "/",
+    //     element: <Home/>,
+    //     errorElement: <Sobre/>,
+    //     children: 
+    //     [
+    //         {
+    //         path: "/",
+    //         element: <Usuario/>
+    //         },
+    //     ]
+    // },
 
-// export default Rotas
+    {
+        path: "/",
+        element: <Home />,
+        children:
+            [
+                {
+                    path: "/",
+                    element: <Home />
+                },
+            ]
+    },
+    {
+        path: "/login",
+        element: <Login />,
+    },
+    {
+        path: "/cadastro",
+        element: <><h1>Cadastrar</h1><Link to="/">Home</Link></>,
+    },
+    {
+        path: "/projetos",
+        element: <AreaProjetos />,
+    }
+
+]);
+
+export default Rotas

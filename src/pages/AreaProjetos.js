@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card, Input, Label } from "reactstrap";
 import "../index.css";
 import 'primeicons/primeicons.css';
+import { Link } from "react-router-dom/dist";
 
 export default class Home extends React.Component {
 
@@ -15,7 +16,7 @@ export default class Home extends React.Component {
                     <h3>
                         Nenhum projeto foi criado ainda.<i className="pi pi-thumbs-down"></i>
                     </h3>
-                    
+                    <Link to="/">Home</Link>
                 </div>
             </div>
         )
