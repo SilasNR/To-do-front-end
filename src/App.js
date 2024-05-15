@@ -1,47 +1,40 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-import Projetos from './pages/AreaProjetos';
+//import Projetos from './pages/AreaProjetos';
 
-// import {Menubar} from 'primereact/menubar';
-// import Rotas from './Rotas';
-// import { RouterProvider, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './pages/home.js';
+import Sobre from './pages/Login.js';
+import Contato from './pages/AreaProjetos.js';
 
 
-class App extends Component {
-  render() {
-  //   const menuitems = [
-  //     {
-  //        label:'Home',
-  //        //icon:'pi pi-fw pi-home',
-  //        command:() => this.props.history.push('/')
-  //     },
-  //     {
-  //        label:'Sobre',
-  //        //icon:'pi pi-fw pi-user',
-  //        command:() => this.props.history.push('/sobre')
-  //     },
-  //     {
-  //        label:'Contato',
-  //        //icon:'pi pi-fw pi-comment',
-  //        command:() => this.props.history.push('/contato')
-  //     }
-  //  ];
+export default function App() {
+    //   const menuitems = [
+    //     {
+    //        label:'Home',
+    //        //icon:'pi pi-fw pi-home',
+    //        command:() => this.props.history.push('/')
+    //     },
+    //     {
+    //        label:'Sobre',
+    //        //icon:'pi pi-fw pi-user',
+    //        command:() => this.props.history.push('/sobre')
+    //     },
+    //     {
+    //        label:'Contato',
+    //        //icon:'pi pi-fw pi-comment',
+    //        command:() => this.props.history.push('/contato')
+    //     }
+    //  ];
     return (
-      <>
-        <Projetos/>
-      </>
-      // <div className="App">
-      //   <Menubar model={menuitems}/>
-      //   <div id="main">
-      //       <main>
-      //           <div className="content" id="content">
-      //               {this.props.children}
-      //           </div>
-      //       </main>
-      //   </div>
-      // </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}>
+            <Route index element={<Home />} />
+            <Route path="sobre" element={<Sobre />} />
+            <Route path="contact" element={<Contato />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     );
-  }
 }
-
-export default App;

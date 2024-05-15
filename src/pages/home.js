@@ -1,9 +1,9 @@
 import React from "react";
-
+import { Outlet, Link } from "react-router-dom";
 
 const Home = () => {
     <div className="title">
-        <h4>home</h4>
+        <Link to={"/"}>home</Link >
         <p>Aqui estão as informações a meu respeito</p>
     </div>
 }
