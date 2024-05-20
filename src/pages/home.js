@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import { Outlet, Link } from "react-router-dom";
-
-const Home = () => {
-    <div className="title">
-        <Link to={"/"}>home</Link >
-        <p>Aqui estão as informações a meu respeito</p>
-=======
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -29,7 +20,6 @@ const Home = () => {
           </ul>
         </nav>
       </div>
->>>>>>> 6c976d48736ac24f3d8f95819ee9f9741517600c
     </div>
   );
 }
