@@ -1,16 +1,14 @@
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RouterProvider } from 'react-router-dom';
-import AreaProjetos from "./pages/AreaProjetos";
-import Home from "./pages/home";
-import Login from "./pages/Login";
 import Rotas from "./Rotas";
+import { PrimeReactProvider } from 'primereact/api';
 
-export default function App() {
+export default function App({ Component, pageProps }) {
   return (
     <>
-     <RouterProvider router={Rotas}/>
-    </>
     
+      
+        
+        <RouterProvider router={Rotas} />
+    </>
   );
 }
