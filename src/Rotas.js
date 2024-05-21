@@ -5,6 +5,7 @@ import { Link } from "react-router-dom/dist";
 
 import Home from "./pages/home";
 import Login from "./pages/Login";
+import Cadastro from "./pages/cadastro";
 import AreaProjetos from "./pages/AreaProjetos";
 
 const Rotas = createBrowserRouter([
@@ -38,10 +39,10 @@ const Rotas = createBrowserRouter([
     },
     {
         path: "/cadastro",
-        element: <><h1>Cadastrar</h1><Link to="/">Home</Link></>,
+        element: <Cadastro />,
     },
     {
-        path: "/projetos",
+        path: "/projeto",
         element: <AreaProjetos />,
     }
 

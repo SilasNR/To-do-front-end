@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Card, Input, Label } from "reactstrap";
-import "../index.css";
 import 'primeicons/primeicons.css';
 import { Link } from "react-router-dom/dist";
 

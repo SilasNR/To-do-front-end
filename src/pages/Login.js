@@ -1,44 +1,51 @@
 import React from "react";
 import { Link } from "react-router-dom/dist";
 import { Button } from 'primereact/button';
-import { Divider } from "primereact/divider";
 import { InputText } from "primereact/inputtext";
-import "primereact/resources/themes/lara-light-cyan/theme.css";
+import "./style/login.css"
 
-export default class Home extends React.Component {
+const MeuBotao = ({ children, ...props }) => {
+    return (
+      <button type={props.type} className="btn col meuBotaoPrimario" {...props}>
+        {children}
+      </button>
+    );
+  };
 
+export default class Login extends React.Component {
+
+    
     render() {
         return (
-            <div>
-                <Link to="/">Home</Link>
-                <div className="d-flex flex-column align-items-center justify-content-center">
-                    <div className="card col-5 ">
-                        
-                        <div className="d-flex flex-column ">
-                        <h1 className="align-self-center"> TO-DO</h1>
-                            <div className="w-full md:w-5 d-flex flex-column align-items-center justify-content-center gap-3 py-5">
-                                <div className="d-flex flex-wrap justify-content-center align-items-center gap-2">
-                                    <label className="w-6rem">Username</label>
-                                    <InputText id="username" type="text" className="w-12rem" />
-                                </div>
-                                <div className="d-flex flex-wrap justify-content-center align-items-center gap-2">
-                                    <label className="w-6rem">Password</label>
-                                    <InputText id="password" type="password" className="w-12rem" />
-                                </div>
-                                <Button label="Login" icon="pi pi-user" className="w-10rem mx-auto"></Button>
-                            </div>
-                            <div className="w-full md:w-2">
-                                <Divider layout="horizontal" className="d-flex md:hidden" align="center">
-                                    <b>OR</b>
-                                </Divider>
-                            </div>
-                            <div className="w-full md:w-5 d-flex align-items-center justify-content-center py-5">
-                                <Button label="Sign Up" icon="pi pi-user-plus" severity="success" className="w-10rem"></Button>
+            <div className="fundo">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-md-4 mx-auto">
+                            <div class="login-container">
+                                <h2 className="text-light">Tela de Login</h2>
+
+                                <form action="#">
+                                    <div class="text-light form-group">
+                                        <label for="email">Email:</label>
+                                        <InputText type="email" class="form-control" id="email" placeholder="Digite seu email" />
+                                    </div>
+                                    <div class="text-light form-group">
+                                        <label for="senha">Senha:</label>
+                                        <InputText type="password" class="form-control" id="senha" placeholder="Digite sua senha" />
+                                    </div>
+                                    <div className="w-100">
+                                        <div class=" w-100 d-flex flex-row">
+                                            <Link to="/projeto"><MeuBotao type="submit">Entrar</MeuBotao></Link>
+                                            <Link to="/cadastro"><MeuBotao type="button">Cadastro</MeuBotao></Link>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         )
     }
 }
