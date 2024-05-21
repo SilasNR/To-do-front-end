@@ -4,20 +4,13 @@ import { Button } from 'primereact/button';
 import { InputText } from "primereact/inputtext";
 import "./style/login.css"
 
-const MeuBotao = ({ children, ...props }) => {
-    return (
-      <button type={props.type} className="btn col meuBotaoPrimario" {...props}>
-        {children}
-      </button>
-    );
-  };
 
 export default class Login extends React.Component {
 
-    
+
     render() {
         return (
-            <div className="fundo">
+            <div className="fundo-login">
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-md-4 mx-auto">
@@ -33,11 +26,10 @@ export default class Login extends React.Component {
                                         <label for="senha">Senha:</label>
                                         <InputText type="password" class="form-control" id="senha" placeholder="Digite sua senha" />
                                     </div>
-                                    <div className="w-100">
-                                        <div class=" w-100 d-flex flex-row">
-                                            <Link to="/projeto"><MeuBotao type="submit">Entrar</MeuBotao></Link>
-                                            <Link to="/cadastro"><MeuBotao type="button">Cadastro</MeuBotao></Link>
-                                        </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <Link to="/projeto"><button type="submit"className="btn btn-primary botao-padrao btn-lg ">Entrar</button></Link>
+                                        <Link to="/cadastro"><button class="btn  btn-secondary botao-padrao btn-lg ">Cadastrar-se</button></Link>
                                     </div>
                                 </form>
                             </div>
