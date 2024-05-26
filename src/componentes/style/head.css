@@ -1,0 +1,15 @@
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  background-color: #161616;
+  color: #eee;
+  position: fixed;
+  padding: 10px;
+  height: 10%;
+  width: 100%;
+}
+

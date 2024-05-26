@@ -1,0 +1,80 @@
+main{
+    background-color: #212121;
+    color: #eee;
+}
+.boards-page-board-section {
+    width: 100%;
+}
+
+.boards-page-board-section-header {
+    width: 100%;
+}
+
+.cards-container {
+    display: flex;
+    overflow-x: auto;
+    align-items: center;
+    padding: 10px;
+}
+
+.card-wrapper {
+    flex: 0 0 auto;
+    margin-right: 10px;
+}
+
+.card {
+    min-width: 300px;
+    margin: 10px;
+    border: 3px solid #eee; /* Aumenta a largura da borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra para dar profundidade */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #212121;
+    color: #eee;   
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.card-button {
+  width: 100px;
+  height: 40px; 
+  border-radius: 5; 
+}
+
+.btn-addCard {
+    flex: 0 0 auto;
+    width: 50px;
+    height: 50px;
+    background-color: darkcyan;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+    
+}
+
+.btn-addCard:hover {
+    background-color: #008b8b; /* Slightly darker shade of darkcyan */
+}
+
+.btn-addCard:focus {
+    outline: none;
+}

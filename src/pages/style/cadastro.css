@@ -1,0 +1,36 @@
+.fundo-cadastro {
+    background-color: #212121;
+    color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    background-color: #181818;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+    background-color: darkcyan;
+    color: #fff;          
+    width: 45%;
+    padding: 5px;
+    border: 1px solid #444;
+    margin-right: 10px;
+}
+
+.form-control, .btn {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    background-color: #303030;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 10px;
+}
