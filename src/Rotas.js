@@ -1,12 +1,11 @@
 import React from "react";
 import {createBrowserRouter } from "react-router-dom";
-import { Link } from "react-router-dom/dist";
+// import { Link } from "react-router-dom/dist";
 
 import Projetos from "./pages/Projetos";
 import Home from "./pages/home";
 import Login from "./pages/Login";
-import Cadastro from "./pages/cadastro";
-import AreaProjetos from "./pages/AreaProjetos";
+import Cadastro from "./pages/Cadastro";
 
 const Rotas = createBrowserRouter([
     // {

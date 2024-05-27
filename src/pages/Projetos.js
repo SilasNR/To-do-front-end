@@ -1,6 +1,6 @@
 import React from "react";
-import { InputText } from "primereact/inputtext";
-import { Link } from "react-router-dom/dist";
+// import { InputText } from "primereact/inputtext";
+// import { Link } from "react-router-dom/dist";
 import "./style/projetos.css"
 export default class Cadastro extends React.Component {
 
@@ -8,14 +8,13 @@ export default class Cadastro extends React.Component {
         return (
             <div className="fundo-projetos">
                 <nav class="container-fluid text-white py-5">
-                    <h1 class="text-center display-6">To-Do List</h1>
+                    <h1 class="text-center display-6">Projetos</h1>
                 </nav>
 
                 <main class="container-fluid d-flex flex-column align-items-center justify-content-center vh-100">
                     <div class="boards-page-board-section">
                         <div class="boards-page-board-section-header">
                             <div className="row">
-
                                 <div class="col-md-4">
                                     <div class="card">
                                         <div class="card-body">
@@ -48,9 +47,6 @@ export default class Cadastro extends React.Component {
                             </div>
                         </div>
                     </div>
-
-
-
                 </main>
             </div>
         )
