@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import Head from "../componentes/header"
 
+const API_URL = 'localhost:4000/project'
 
-import "./style/projetos.css"
+//import "./style/projetos.css"
+
 
 export default class Projetos extends React.Component {
+
     constructor(props) {
         super(props);
 
