@@ -7,15 +7,16 @@ import "./style/login.css";
 
 const Login = () => {
     const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
+    const [password, setpassword] = useState("");
     const [error, setError] = useState("");
+    console.log("batatinha frita");
 
     const sendLog = async (message) => {
         try {
             await setInterval(() => {
                 console.log(message, " batatinha frita");
             }, 1000000); // 60000 ms = 1 minuto
-            
+
         } catch (err) {
             console.error("Erro ao enviar o log:", err);
         }
@@ -24,19 +25,26 @@ const Login = () => {
     const handleLogin = async () => {
 
         try {
+            
+            console.log("batatinha frita");
+            
             const response = await axios.post("http://localhost:4000/auth/login", {
                 email,
-                senha,
+                password,
             });
-            
-            console.log(response, "batatinha frita")
 
-            await setInterval(() => {
-                console.log(" batatinha frita");
-            }, 100000000000000000000000000); // 60000 ms = 1 minuto
+            console.log(response)
 
-
-
+            const token = response.data?.access_token;
+            if (token) {
+                // Armazena o token no localStorage
+                localStorage.setItem("token", response.data.access_token);
+                // Envia uma mensagem para o console com o valor do token armazenado
+                console.log("Token armazenado:", localStorage.getItem("token"));
+            } else {
+                // Lança um erro se o token não estiver presente na resposta
+                throw new Error("Token não encontrado na resposta");
+            }
         } catch (error) {
             console.error("Erro ao enviar o log:", error)
 
@@ -69,14 +77,14 @@ const Login = () => {
                                     />
                                 </div>
                                 <div className="text-light form-group">
-                                    <label htmlFor="senha">Senha:</label>
+                                    <label htmlFor="password">password:</label>
                                     <InputText
                                         type="password"
                                         className="form-control"
-                                        id="senha"
-                                        value={senha}
-                                        onChange={(e) => setSenha(e.target.value)}
-                                        placeholder="Digite sua senha"
+                                        id="password"
+                                        value={password}
+                                        onChange={(e) => setpassword(e.target.value)}
+                                        placeholder="Digite sua password"
                                     />
                                 </div>
 

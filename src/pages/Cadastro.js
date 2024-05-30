@@ -9,18 +9,17 @@ const Cadastro = () => {
   const [emailx, setEmail] = useState("");
   const [senhax, setSenha] = useState("");
   const [errorx, setError] = useState("");
-  const dados = {
-    username: "Bruno Santos",
-    secret_question: "queroquedecerto",
-    status: true,
-    email: "brunosantos@gmail.com",
-    senha: "BrunoSantos01*"
-  }
+ const dados = {
+  username: "Bruno Santos",
+  secret_question: "queroquedecerto",
+  status: true,
+  email: "brunosantos@gmail.com",
+  password: "BrunoSantos01*"
+}
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:4000/user", dados );
-      alert(response, " batatinha frita");
-    
+      const response = await axios.post("http://localhost:4000/user", dados);
+
     } catch (error) {
       console.error("erro durante o login:", error);
 
@@ -49,7 +48,7 @@ const Cadastro = () => {
                     id="emailx"
                     value={emailx}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Digite seu email"
+                    placeholder="Digite seu email ooooooooooo"
                   />
                 </div>
                 <div className="text-light form-group">
