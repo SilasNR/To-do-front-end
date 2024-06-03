@@ -6,19 +6,37 @@ import axios from "axios";
 import "./style/cadastro.css";
 
 const Cadastro = () => {
-  const [emailx, setEmail] = useState("");
-  const [senhax, setSenha] = useState("");
-  const [errorx, setError] = useState("");
- const dados = {
-  username: "Bruno Santos",
-  secret_question: "queroquedecerto",
-  status: true,
-  email: "brunosantos@gmail.com",
-  password: "BrunoSantos01*"
-}
-  const handleLogin = async () => {
+
+  const [username, setUsername] = useState("");
+  const [palavra, setPalavra] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  console.log("batatinha frita");
+
+  const handleCadastro = async (e) => {
     try {
-      const response = await axios.post("http://localhost:4000/user", dados);
+      e.preventDefault();
+
+      const response = await axios.post("http://localhost:4000/user", {
+        username,
+        palavra,
+        email,
+        password
+      });
+
+      console.log(response)
+
+      const token = response.data?.access_token;
+      if (token) {
+        // Armazena o token no localStorage
+        localStorage.setItem("token", response.data.access_token);
+        // Envia uma mensagem para o console com o valor do token armazenado
+        console.log("Token armazenado:", localStorage.getItem("token"));
+      } else {
+        // Lança um erro se o token não estiver presente na resposta
+        throw new Error("Token não encontrado na resposta");
+      }
 
     } catch (error) {
       console.error("erro durante o login:", error);
@@ -31,6 +49,8 @@ const Cadastro = () => {
     }
   };
 
+
+
   return (
     <div className="fundo-login">
       <div className="container mt-5">
@@ -39,42 +59,66 @@ const Cadastro = () => {
             <div className="login-container">
               <h2 className="text-light">Tela de Login</h2>
 
-              <form onSubmit={handleLogin}>
+              <form onSubmit={handleCadastro}>
+
+                <div className="text-light form-group">
+                  <label htmlFor="senha">User Name:</label>
+                  <InputText
+                    className="form-control"
+                    id="usernamex"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Digite seu nome de usuario"
+                  />
+                </div>
+
+                <div className="text-light form-group">
+                  <label htmlFor="senha">Palavra Secreta:</label>
+                  <InputText
+                    type="text"
+                    className="form-control"
+                    id="palavrax"
+                    value={palavra}
+                    onChange={(e) => setPalavra(e.target.value)}
+                    placeholder="Digite sua palavara secreta"
+                  />
+                </div>
+
                 <div className="text-light form-group">
                   <label htmlFor="email">Email:</label>
                   <InputText
                     type="email"
                     className="form-control"
                     id="emailx"
-                    value={emailx}
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Digite seu email ooooooooooo"
+                    placeholder="Digite seu email"
                   />
                 </div>
+
                 <div className="text-light form-group">
                   <label htmlFor="senha">Senha:</label>
                   <InputText
                     type="password"
                     className="form-control"
                     id="senhax"
-                    value={senhax}
-                    onChange={(e) => setSenha(e.target.value)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Digite sua senha"
                   />
                 </div>
 
+
                 <div className="d-flex justify-content-between">
+
                   <button type="submit" className="btn btn-primary botao-padrao btn-lg">
-                    Entrar
+                    Cadastrar-se
                   </button>
-                  <Link to="/cadastro">
-                    <button className="btn btn-secondary botao-padrao btn-lg">
-                      Cadastrar-se
-                    </button>
-                  </Link>
+
                 </div>
+
               </form>
-              {errorx && <p className="text-light">{errorx}</p>}
+              {error && <p className="text-light">{error}</p>}
             </div>
           </div>
         </div>

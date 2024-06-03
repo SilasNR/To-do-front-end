@@ -6,7 +6,7 @@ import Head from "../componentes/header"
 
 const API_URL = 'localhost:4000/project'
 
-//import "./style/projetos.css"
+import "./style/projetos.css"
 
 
 export default class Projetos extends React.Component {

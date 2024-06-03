@@ -11,23 +11,14 @@ const Login = () => {
     const [error, setError] = useState("");
     console.log("batatinha frita");
 
-    const sendLog = async (message) => {
-        try {
-            await setInterval(() => {
-                console.log(message, " batatinha frita");
-            }, 1000000); // 60000 ms = 1 minuto
 
-        } catch (err) {
-            console.error("Erro ao enviar o log:", err);
-        }
-    };
 
     const handleLogin = async () => {
 
         try {
-            
+
             console.log("batatinha frita");
-            
+
             const response = await axios.post("http://localhost:4000/auth/login", {
                 email,
                 password,
@@ -89,9 +80,12 @@ const Login = () => {
                                 </div>
 
                                 <div className="d-flex justify-content-between">
-                                    <button type="submit" className="btn btn-primary botao-padrao btn-lg">
-                                        Entrar
-                                    </button>
+
+                                    <Link to="/projeto">
+                                        <button type="submit" className="btn btn-primary botao-padrao btn-lg">
+                                            Entrar
+                                        </button>
+                                    </Link>
                                     <Link to="/cadastro">
                                         <button className="btn btn-secondary botao-padrao btn-lg">
                                             Cadastrar-se
