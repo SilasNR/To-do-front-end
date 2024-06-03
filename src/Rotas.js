@@ -5,7 +5,7 @@ import {createBrowserRouter } from "react-router-dom";
 import Projetos from "./pages/Projetos";
 import Home from "./pages/home";
 import Login from "./pages/Login";
-import Cadastro from "./pages/Cadastro";
+import Cadastro from "./pages/cadastro";
 
 const Rotas = createBrowserRouter([
     // {
