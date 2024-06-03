@@ -1,0 +1,18 @@
+.fundo-home {
+    background-color: #212121;
+    color: #eee;
+  }
+  
+  nav {
+    background-color: #161616;
+    position: fixed;
+    padding: 10px;
+    height: 20%; /* Define a altura do header como 50px */
+    width: 100%; /* Define a largura do header como 100% da largura da tela */
+  }
+  
+  .botao-padrao{
+    background-color: darkcyan;
+    color: #fff; 
+    border: darkcyan;
+  }

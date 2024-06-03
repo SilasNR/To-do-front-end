@@ -1,21 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App.js";
-import 'bootstrap/dist/css/bootstrap.css';
-import "primereact/resources/themes/lara-light-cyan/theme.css";
-import { PrimeReactProvider } from 'primereact/api';
-// import * as serviceWorker from './serviceWorker';
-// import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-// import Home from './pages/home.js';
-// import Sobre from './pages/Login.js';
-// import Contato from './pages/AreaProjetos.js';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(rootElement);
+
 root.render(
   <React.StrictMode>
-        <PrimeReactProvider>
-            <App />
-        </PrimeReactProvider>
+    <App />
   </React.StrictMode>
 );
+
+
