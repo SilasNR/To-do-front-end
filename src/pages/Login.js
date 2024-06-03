@@ -6,11 +6,12 @@ import axios from "axios";
 import "./style/login.css";
 
 const Login = () => {
+
     const [email, setEmail] = useState("");
     const [password, setpassword] = useState("");
+    
     const [error, setError] = useState("");
-    console.log("batatinha frita");
-
+    
 
 
     const handleLogin = async () => {

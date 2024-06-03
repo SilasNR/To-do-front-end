@@ -8,38 +8,27 @@ import "./style/cadastro.css";
 const Cadastro = () => {
 
   const [username, setUsername] = useState("");
-  const [palavra, setPalavra] = useState("");
+  const [secret_question, setQuestion] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  
+  
   console.log("batatinha frita");
 
   const handleCadastro = async (e) => {
     try {
+
       e.preventDefault();
 
       const response = await axios.post("http://localhost:4000/user", {
         username,
-        palavra,
+        secret_question,
         email,
         password
       });
-
-      console.log(response)
-
-      const token = response.data?.access_token;
-      if (token) {
-        // Armazena o token no localStorage
-        localStorage.setItem("token", response.data.access_token);
-        // Envia uma mensagem para o console com o valor do token armazenado
-        console.log("Token armazenado:", localStorage.getItem("token"));
-      } else {
-        // Lança um erro se o token não estiver presente na resposta
-        throw new Error("Token não encontrado na resposta");
-      }
-
     } catch (error) {
-      console.error("erro durante o login:", error);
+      console.error("erro durante o cadastro:", error);
 
       if (error.response && error.response.status === 404) {
         setError("Credenciais inválidas");
@@ -78,8 +67,8 @@ const Cadastro = () => {
                     type="text"
                     className="form-control"
                     id="palavrax"
-                    value={palavra}
-                    onChange={(e) => setPalavra(e.target.value)}
+                    value={secret_question}
+                    onChange={(e) => setQuestion(e.target.value)}
                     placeholder="Digite sua palavara secreta"
                   />
                 </div>
