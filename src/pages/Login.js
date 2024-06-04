@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom/dist";
 import { InputText } from "primereact/inputtext";
 import axios from "axios";
@@ -9,31 +10,35 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setpassword] = useState("");
-    
     const [error, setError] = useState("");
-    
+    const navigacao = useNavigate();
 
 
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+
+        
 
         try {
 
-            console.log("batatinha frita");
-
+            e.preventDefault();
             const response = await axios.post("http://localhost:4000/auth/login", {
                 email,
                 password,
             });
-
+            
             console.log(response)
+            
 
+            //localStorage.setItem("batata", "response.data.access_token");
             const token = response.data?.access_token;
             if (token) {
                 // Armazena o token no localStorage
                 localStorage.setItem("token", response.data.access_token);
                 // Envia uma mensagem para o console com o valor do token armazenado
                 console.log("Token armazenado:", localStorage.getItem("token"));
+                navigacao('/projeto');
             } else {
+                console.log("cade o token");
                 // Lança um erro se o token não estiver presente na resposta
                 throw new Error("Token não encontrado na resposta");
             }
@@ -82,11 +87,11 @@ const Login = () => {
 
                                 <div className="d-flex justify-content-between">
 
-                                    <Link to="/projeto">
-                                        <button type="submit" className="btn btn-primary botao-padrao btn-lg">
-                                            Entrar
-                                        </button>
-                                    </Link>
+
+                                    <button type="submit" className="btn btn-primary botao-padrao btn-lg">
+                                        Entrar
+                                    </button>
+
                                     <Link to="/cadastro">
                                         <button className="btn btn-secondary botao-padrao btn-lg">
                                             Cadastrar-se
