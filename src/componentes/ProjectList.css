@@ -1,0 +1,7 @@
+.project-item {
+    transition: background-color 0.3s ease;
+}
+
+.project-item:hover {
+    background-color: #f0f0f0;
+}

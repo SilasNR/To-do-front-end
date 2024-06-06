@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Head from "../componentes/header"
+import "./style/projetos.css"
 
 const API_URL = 'localhost:4000/project'
 
-import "./style/projetos.css"
 
 
 export default class Projetos extends React.Component {
@@ -94,7 +94,9 @@ export default class Projetos extends React.Component {
                                         </div>
                                     </div>
                                 ))}
-                                <button className='btn-addCard' onClick={this.addMeusProjetosCard}>+</button>
+                                <Link to="/criacao">
+                                    <button className='btn-addCard'>+</button>
+                                </Link>
                             </div>
                         </div>
 
