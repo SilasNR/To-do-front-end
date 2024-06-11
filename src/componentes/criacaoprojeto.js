@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 const Criacao = ({ show, onClose, id_project }) => {
     const [name, setName] = useState('');
@@ -62,11 +62,11 @@ const Criacao = ({ show, onClose, id_project }) => {
                             required
                         />
                     </div>
-                    <Button type="submit" variant="primary">Salvar</Button>
+                    <button type="submit" variant="primary">Salvar</button>
                 </form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={onClose}>Cancelar</Button>
+                <button variant="secondary" onClick={onClose}>Cancelar</button>
             </Modal.Footer>
         </Modal>
     );

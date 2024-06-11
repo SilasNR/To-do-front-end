@@ -1,126 +1,83 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Card, CardContent, Typography, Button, Modal, Box } from '@mui/material';
 
-import Head from "../componentes/header"
-import "./style/projetos.css"
+const Projetos = () => {
+    const [projects, setProjects] = useState([]);
+    const [selectedProject, setSelectedProject] = useState(null);
+    const [open, setOpen] = useState(false);
 
-const API_URL = 'localhost:4000/project'
-
-
-
-export default class Projetos extends React.Component {
-
-    constructor(props) {
-        super(props);
-
-        const savedMeusProjetos = JSON.parse(localStorage.getItem('meusProjetos')) || [];
-        const savedParticipandoProjetos = JSON.parse(localStorage.getItem('participandoProjetos')) || [];
-
-
-        this.state = {
-            meusProjetos: savedMeusProjetos.length > 0 ? savedMeusProjetos : [
-                {
-                    title: "Projeto de alguma coisa",
-                    content: "card content 1...",
-                },
-            ],
-            participandoProjetos: savedParticipandoProjetos.length > 0 ? savedParticipandoProjetos : [
-                {
-                    title: "Projeto participando 1",
-                    content: "card content participando 1...",
-                },
-            ],
-        };
-    }
-
-    addMeusProjetosCard = () => {
-        const newCard = {
-            title: `Projeto ${this.state.meusProjetos.length + 1}`,
-            content: `Card content ${this.state.meusProjetos.length + 1}...`,
-        };
-        this.setState((prevState) => {
-            const updatedMeusProjetos = [...prevState.meusProjetos, newCard];
-            localStorage.setItem('meusProjetos', JSON.stringify(updatedMeusProjetos));
-            return { meusProjetos: updatedMeusProjetos };
-        });
+    // Função para buscar os projetos
+    const fetchProjects = async () => {
+        try {
+            const response = await axios.get('http://localhost:4000/project');
+            console.log('Dados recebidos da API:', response.data);
+            setProjects(response.data);
+            console.log('Dados recebidos da API: ---', projects);
+        } catch (error) {
+            console.error("Houve um erro ao buscar os projetos!", error);
+        }
     };
 
-    addParticipandoProjetosCard = () => {
-        const newCard = {
-            title: `Projeto ${this.state.participandoProjetos.length + 1}`,
-            content: `Card content ${this.state.participandoProjetos.length + 1}...`,
-        };
-        this.setState((prevState) => {
-            const updatedParticipandoProjetos = [...prevState.participandoProjetos, newCard];
-            localStorage.setItem('participandoProjetos', JSON.stringify(updatedParticipandoProjetos));
-            return { participandoProjetos: updatedParticipandoProjetos };
-        });
+    // Função para abrir o modal com detalhes do projeto
+    const handleOpen = (project) => {
+        setSelectedProject(project);
+        setOpen(true);
     };
 
-    deleteMeusProjetosCard = (index) => {
-        const updatedMeusProjetos = this.state.meusProjetos.filter((_, i) => i !== index);
-        this.setState({ meusProjetos: updatedMeusProjetos });
-        localStorage.setItem('meusProjetos', JSON.stringify(updatedMeusProjetos));
+    // Função para fechar o modal
+    const handleClose = () => {
+        setOpen(false);
+        setSelectedProject(null);
     };
 
-    deleteParticipandoProjetosCard = (index) => {
-        const updatedParticipandoProjetos = this.state.participandoProjetos.filter((_, i) => i !== index);
-        this.setState({ participandoProjetos: updatedParticipandoProjetos });
-        localStorage.setItem('participandoProjetos', JSON.stringify(updatedParticipandoProjetos));
-    };
+    // Construtor do componente - chamado uma vez na montagem do componente
+    useEffect(() => {
+        fetchProjects();
+        console.log('Estado dos projetos:', projects, projects.length);
+    }, []);
 
-    render() {
-        return (
-            <div className="fundo-projetos">
-                <Head />
-                <main class="container-fluid d-flex flex-column align-items-center justify-content-center vh-100">
-                    <div class="boards-page-board-section">
-                        <div class="boards-page-board-section-header">
-                            <h1>Seus projetos:</h1>
-                            <div className="cards-container">
 
-                                {this.state.meusProjetos.map((card, index) => (
-                                    <div key={index} className='card-wrapperd'>
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5 class="card-title">{card.title}</h5>
-                                                <p class="card-text">{card.content}</p>
-                                                <div className="d-flex">
-                                                    <Link to={`/card/${index}`} className="btn btn-primary card-button mr-2">Read More</Link>
-                                                    <button className="btn btn-danger card-button" onClick={() => this.deleteMeusProjetosCard(index)}>Delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                                <Link to="/criacao">
-                                    <button className='btn-addCard'>+</button>
-                                </Link>
-                            </div>
+    return (
+        <div>
+            {projects.map((project) => (
+                <Card key={project.id_project} style={{ marginBottom: 20 }}>
+                    <CardContent>
+                        <Typography variant="h5" component="div">
+                            {project.name_project}
+                        </Typography>
+                        <Typography color="textSecondary">
+                            Status: {project.status_project}
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                            {project.resume_project}
+                        </Typography>
+                        <Button variant="outlined" color="primary" onClick={() => handleOpen(project)}>
+                            Ver detalhes
+                        </Button>
+                    </CardContent>
+                </Card>
+            ))}
+
+            <Modal open={open} onClose={handleClose}>
+                <Box sx={{ width: 400, p: 4, bgcolor: 'background.paper', margin: 'auto', marginTop: '10%' }}>
+                    {selectedProject && (
+                        <div>
+                            <Typography variant="h4" component="h2">
+                                {selectedProject.name_project}
+                            </Typography>
+                            <Typography color="textSecondary">
+                                Status: {selectedProject.status_project}
+                            </Typography>
+                            <Typography variant="body2" component="p">
+                                {selectedProject.resume_project}
+                            </Typography>
                         </div>
+                    )}
+                </Box>
+            </Modal>
+        </div>
+    );
+};
 
-                        <div class="boards-page-board-section-header">
-                            <h1>Participando dos projetos:</h1>
-                            <div className="cards-container">
-
-                                {this.state.participandoProjetos.map((card, index) => (
-                                    <div key={index} className='card-wrapperd'>
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5 className="card-title">{card.title}</h5>
-                                                <p className="card-text">{card.content}</p>
-                                                <button class="btn btn-primary">Read More</button>
-                                                <button className="btn btn-danger" onClick={() => this.deleteParticipandoProjetosCard(index)}>Sair</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-        )
-    }
-}
+export default Projetos;

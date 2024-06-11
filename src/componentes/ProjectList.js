@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Modal } from 'react-bootstrap'; // Importe o Button do Bootstrap
+// import { Modal } from 'react-bootstrap'; // Importe o Button do Bootstrap
 
 const ProjectList = ({ onSelectProject }) => { // Adicione uma prop para lidar com a seleção de projetos
     const [projects, setProjects] = useState([]);
@@ -20,7 +20,6 @@ const ProjectList = ({ onSelectProject }) => { // Adicione uma prop para lidar c
 
     return (
         <div className="container mt-5">
-            <h2>Lista de Projetos</h2>
             <ul className="list-group">
                 {projects.map((project) => (
                     <li key={project.id_project} className="list-group-item project-item" onClick={() => onSelectProject(project.id_project)}>

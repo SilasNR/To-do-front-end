@@ -19,9 +19,9 @@ export default function App({ Component, pageProps }) {
     setModalVisible(true); // Abre o modal ao selecionar um projeto
   };
 
-  const handleCloseModal = () => {
-    setModalVisible(false); // Fecha o modal
-  };
+  // const handleCloseModal = () => {
+  //   setModalVisible(false); // Fecha o modal
+  // };
 
   return (
     <Router>
@@ -35,10 +35,12 @@ export default function App({ Component, pageProps }) {
           <Route path="/projectlist" exact element={<ProjectList />} />
         </Routes>
 
-        <div className="App">
-          <ProjectList onSelectProject={handleSelectProject} />
+        {/* <div className="App"> */}
+          {/* <ProjectList onSelectProject={handleSelectProject} /> */}
+
+          {/* <Projetos onSelectProject={handleSelectProject}/> 
           <Criacao show={modalVisible} onClose={handleCloseModal} id_project={selectedProjectId} />
-        </div>
+        </div> */}
       </div>
     </Router>
   );
