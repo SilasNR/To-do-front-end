@@ -1,7 +1,8 @@
-main{
+main {
     background-color: #212121;
     color: #eee;
 }
+
 .boards-page-board-section {
     width: 100%;
 }
@@ -23,19 +24,23 @@ main{
 }
 
 .card {
+    flex: 0 0 auto;
     min-width: 300px;
     margin: 10px;
-    border: 3px solid #eee; /* Aumenta a largura da borda */
-    border-radius: 5px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra para dar profundidade */
+    border: 3px solid #eee;
+    /* Aumenta a largura da borda */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
 }
 
 .card-body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #212121;
-    color: #eee;   
+    background-color: #fff;
+    color: #212121;
 }
 
 .card-title {
@@ -49,9 +54,9 @@ main{
 }
 
 .card-button {
-  width: 100px;
-  height: 40px; 
-  border-radius: 5; 
+    width: 100px;
+    height: 40px;
+    border-radius: 5;
 }
 
 .btn-addCard {
@@ -68,56 +73,14 @@ main{
     font-size: 24px;
     margin-right: 10px;
     cursor: pointer;
-    
+
 }
 
 .btn-addCard:hover {
-    background-color: #008b8b; /* Slightly darker shade of darkcyan */
+    background-color: #008b8b;
+    /* Slightly darker shade of darkcyan */
 }
 
 .btn-addCard:focus {
     outline: none;
-}
-
-
-.blurred {
-    filter: blur(5px);
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-}
-
-.modal button {
-    margin-right: 10px;
 }
