@@ -18,6 +18,8 @@ const Projetos = () => {
     const [openCriacao, setOpenCriacao] = useState(false);
     const [error, setError] = useState("");
 
+    const [nameUser, setNameUser] = useState('');
+
     useEffect(() => {
         // Função para decodificar o token JWT e extrair o ID do usuário
         const token = localStorage.getItem('token');
@@ -27,7 +29,8 @@ const Projetos = () => {
         }
 
         fetchProjects();
-    }, []);
+        fetchUser();
+    }, [nameUser]);
 
     const handleCriacaoProjetos = async (e) => {
         try {
@@ -44,6 +47,7 @@ const Projetos = () => {
             });
             setOpenCriacao(false);
             fetchProjects(); // Atualiza a lista de projetos após a criação
+            
         } catch (error) {
             console.error("Erro durante o cadastro:", error);
             if (error.response && error.response.status === 404) {
@@ -63,6 +67,18 @@ const Projetos = () => {
             });
             console.log('Dados recebidos da API:', response.data);
             setProjects(response.data);
+            fetchUser();
+        } catch (error) {
+            console.error("Houve um erro ao buscar os projetos!", error);
+        }
+    };
+
+    const fetchUser = async () => {
+        try {
+            const response = await axios.get(`http://localhost:4000/user/${userIdUser}`);
+            console.log('o nome é:', response.data.username);
+            setNameUser(response.data.username);
+            console.log('o nome é:', nameUser);
         } catch (error) {
             console.error("Houve um erro ao buscar os projetos!", error);
         }
@@ -94,12 +110,12 @@ const Projetos = () => {
 
     return (
         <div className='fundo-projetos'>
-            <Head />
+            <Head link="" estilo="person" nome={nameUser}/>
             
-            <main className="container-fluid d-flex flex-column align-items-center justify-content-center vh-100">
-                <div className="boards-page-board-section">
-                    <div className="boards-page-board-section-header">
-                        <h1>Seus projetos:</h1>
+            <main className="container-fluid d-flex flex-colunm align-items-center justify-content-center painel">
+                <div className="boards-page-board-section d-flex flex-row">
+                    <div className="boards-page-board-section-header" >
+                        <h1>Seus Projetos :</h1>
                         {projects.map((project) => (
                             <card key={project.id_project} style={{ marginBottom: 20 }}>
                                 <div className="cards-container">

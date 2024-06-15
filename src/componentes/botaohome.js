@@ -7,11 +7,9 @@ import "./style/btnhome.css"
 export default function Btnhome() {
     return (
         <div>
-            <Link to="/home">
-                <button className="icon-button-custom">
-                    <i className="bi bi-house"></i>
-                </button>
-            </Link>
+            <button className="icon-button-custom">
+                <i className="bi bi-house"></i>
+            </button>
         </div>
     );
 }
