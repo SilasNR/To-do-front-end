@@ -76,9 +76,7 @@ const Projetos = () => {
     const fetchUser = async () => {
         try {
             const response = await axios.get(`http://localhost:4000/user/${userIdUser}`);
-            console.log('o nome é:', response.data.username);
             setNameUser(response.data.username);
-            console.log('o nome é:', nameUser);
         } catch (error) {
             console.error("Houve um erro ao buscar os projetos!", error);
         }
@@ -87,6 +85,8 @@ const Projetos = () => {
     const handleOpen = (project) => {
         setSelectedProject(project);
         setOpen(true);
+        let url = `/detalheprojeto/${project.id_project}`;
+        window.location.href = url;
     };
 
     const handleClose = () => {
@@ -169,7 +169,7 @@ const Projetos = () => {
                 </Box>
             </Modal>
 
-            <Modal open={open} onClose={handleClose}>
+            {/* <Modal open={open} onClose={handleClose}>
                 <Box sx={{ width: 400, p: 4, bgcolor: 'background.paper', margin: 'auto', marginTop: '10%' }}>
                     {selectedProject && (
                         <div>
@@ -185,7 +185,7 @@ const Projetos = () => {
                         </div>
                     )}
                 </Box>
-            </Modal>
+            </Modal> */}
         </div>
     );
 };

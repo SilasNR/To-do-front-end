@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Cadastro from './pages/Cadastro';
 import Projetos from './pages/Projetos';
 import ProjectList from './componentes/ProjectList';
+import DetalheProjeto from './pages/DetalheProjeto';
 import Criacao from './componentes/criacaoprojeto';
 
 
@@ -33,6 +34,7 @@ export default function App({ Component, pageProps }) {
           <Route path="/cadastro" exact element={<Cadastro />} />
           <Route path="/projeto" exact element={<Projetos />} />
           <Route path="/projectlist" exact element={<ProjectList />} />
+          <Route path="/detalheprojeto/:id" exact element={<DetalheProjeto />} />
         </Routes>
 
         {/* <div className="App"> */}
