@@ -3,6 +3,7 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import Head from '../componentes/header';
 import { Typography, Button, Modal, Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom'; 
 import './style/projetos.css';
 
 const Projetos = () => {
@@ -20,12 +21,15 @@ const Projetos = () => {
 
     const [nameUser, setNameUser] = useState('');
 
+    const navigate = useNavigate();
+
     useEffect(() => {
-        // Função para decodificar o token JWT e extrair o ID do usuário
+
         const token = localStorage.getItem('token');
         if (token) {
             const decoded = jwtDecode(token);
-            setUserIdUser(decoded.sub); // Extrai o 'sub' e define em userIdUser
+            console.log('Decoded token:', decoded);
+            setUserIdUser(decoded.sub);
         }
 
         fetchProjects();
@@ -46,7 +50,7 @@ const Projetos = () => {
                 }
             });
             setOpenCriacao(false);
-            fetchProjects(); // Atualiza a lista de projetos após a criação
+            fetchProjects(); 
             
         } catch (error) {
             console.error("Erro durante o cadastro:", error);
@@ -100,6 +104,12 @@ const Projetos = () => {
 
     const handleCloseCriacao = () => {
         setOpenCriacao(false);
+    };
+
+    const handleNavigateToProject = () => {
+        if (selectedProject) {
+            navigate(`/project/${selectedProject.id_project}`);
+        }
     };
 
     useEffect(() => {
@@ -182,6 +192,9 @@ const Projetos = () => {
                             <Typography variant="body2" component="p">
                                 {selectedProject.resume_project}
                             </Typography>
+                            <Button variant="contained" color="primary" onClick={handleNavigateToProject}>
+                                Va para a página do projeto
+                            </Button>
                         </div>
                     )}
                 </Box>
