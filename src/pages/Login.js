@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom/dist";
 import { InputText } from "primereact/inputtext";
 import axios from "axios";
+import Header from "../componentes/header";
 
 import "./style/login.css";
 
@@ -22,9 +23,9 @@ const Login = () => {
                 email,
                 password,
             });
-            
+
             console.log(response)
-            
+
 
             //localStorage.setItem("batata", "response.data.access_token");
             const token = response.data?.access_token;
@@ -51,52 +52,55 @@ const Login = () => {
     };
 
     return (
-        <div className="fundo-login">
-            <div className="container mt-5">
-                <div className="row">
-                    <div className="col-md-4 mx-auto">
-                        <div className="login-container">
-                            <h2 className="text-light">Tela de Login</h2>
+        <div>
+            <Header estilo="voltar" link="/home"/>
+            <div className="fundo-login">
+                <div className="container mt-5">
+                    <div className="row">
+                        <div className="col-md-4 mx-auto">
+                            <div className="login-container">
+                                <h2 className="text-light">Tela de Login</h2>
 
-                            <form onSubmit={handleLogin}>
-                                <div className="text-light form-group">
-                                    <label htmlFor="email">Email:</label>
-                                    <InputText
-                                        type="email"
-                                        className="form-control"
-                                        id="email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="Digite seu email"
-                                    />
-                                </div>
-                                <div className="text-light form-group">
-                                    <label htmlFor="password">password:</label>
-                                    <InputText
-                                        type="password"
-                                        className="form-control"
-                                        id="password"
-                                        value={password}
-                                        onChange={(e) => setpassword(e.target.value)}
-                                        placeholder="Digite sua password"
-                                    />
-                                </div>
+                                <form onSubmit={handleLogin}>
+                                    <div className="text-light form-group">
+                                        <label htmlFor="email">Email:</label>
+                                        <InputText
+                                            type="email"
+                                            className="form-control"
+                                            id="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            placeholder="Digite seu email"
+                                        />
+                                    </div>
+                                    <div className="text-light form-group">
+                                        <label htmlFor="password">password:</label>
+                                        <InputText
+                                            type="password"
+                                            className="form-control"
+                                            id="password"
+                                            value={password}
+                                            onChange={(e) => setpassword(e.target.value)}
+                                            placeholder="Digite sua password"
+                                        />
+                                    </div>
 
-                                <div className="d-flex justify-content-between">
+                                    <div className="d-flex justify-content-between">
 
 
-                                    <button type="submit" className="btn btn-primary botao-padrao btn-lg">
-                                        Entrar
-                                    </button>
-
-                                    <Link to="/cadastro">
-                                        <button className="btn btn-secondary botao-padrao btn-lg">
-                                            Cadastrar-se
+                                        <button type="submit" className="btn btn-primary botao-padrao btn-lg">
+                                            Entrar
                                         </button>
-                                    </Link>
-                                </div>
-                            </form>
-                            {error && <p className="text-light">{error}</p>}
+
+                                        <Link to="/cadastro">
+                                            <button className="btn btn-secondary botao-padrao btn-lg">
+                                                Cadastrar-se
+                                            </button>
+                                        </Link>
+                                    </div>
+                                </form>
+                                {error && <p className="text-light">{error}</p>}
+                            </div>
                         </div>
                     </div>
                 </div>
