@@ -10,7 +10,7 @@ export default class Home extends React.Component {
             <div>
                 <div class="fundo-home">
 
-                    <Head estilo="home"/>
+                    <Head />
 
                     <main className="container d-flex flex-column align-items-center justify-content-center vh-100">
                         <h2 className="mb-4">Bem-vindo!</h2>
