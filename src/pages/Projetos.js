@@ -22,6 +22,8 @@ const Projetos = () => {
 
     const [nameUser, setNameUser] = useState('');
 
+    const [projetoid, setProjetoId] = useState();
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -90,8 +92,7 @@ const Projetos = () => {
     const handleOpen = (project) => {
         setSelectedProject(project);
         setOpen(true);
-        let url = `/detalheprojeto/${project.id_project}`;
-        window.location.href = url;
+        setProjetoId(project.id_projec)
     };
 
     const handleClose = () => {
@@ -107,9 +108,10 @@ const Projetos = () => {
         setOpenCriacao(false);
     };
 
-    const handleNavigateToProject = () => {
+    const handleNavigateToProject = (projetoid) => {
         if (selectedProject) {
-            navigate(`/project/${selectedProject.id_project}`);
+            let url = `/detalheprojeto/${projetoid}`;
+            window.location.href = url;
         }
     };
 
@@ -121,10 +123,12 @@ const Projetos = () => {
 
     return (
         <div className='fundo-projetos'>
-            <Head link="" estilo="person" nome={nameUser} />
-
-            <main className="container-fluid d-flex flex-colunm align-items-center justify-content-center painel">
+            <Head link="" estilo="user" nome={nameUser} porjetoid={projetoid} />
+                
+            <main className="container-fluid  align-items-center justify-content-center painel">
+            <div style={{height: '100px'}} ></div>
                 <div className="boards-page-board-section d-flex flex-row">
+
                     <div className="boards-page-board-section-header" >
                         <h1>Seus Projetos :</h1>
                         {projects.map((project) => (

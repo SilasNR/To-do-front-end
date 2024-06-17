@@ -20,7 +20,7 @@ export default function Header(props) {
             setTexto("To-Do");
         } else if (props.estilo === "user") {
             setTexto(`Área de ${props.nome}`);
-            setComponente(<Btnuser />);
+            setComponente(<Btnuser projetoid={props.projetoid}/>);
         } else if (props.estilo === "voltar") {
             setTexto("To-Do");
             setComponente(<Btnreturn />);
