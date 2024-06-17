@@ -8,7 +8,7 @@ export default function Btnhome() {
     return (
         <div>
             <button className="icon-button-custom">
-                <i className="bi bi-house"></i>
+            
             </button>
         </div>
     );

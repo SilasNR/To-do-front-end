@@ -3,8 +3,9 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import Head from '../componentes/header';
 import { Typography, Button, Modal, Box } from '@mui/material';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import './style/projetos.css';
+import { Link } from "react-router-dom/dist";
 
 const Projetos = () => {
     const [projects, setProjects] = useState([]);
@@ -50,8 +51,8 @@ const Projetos = () => {
                 }
             });
             setOpenCriacao(false);
-            fetchProjects(); 
-            
+            fetchProjects();
+
         } catch (error) {
             console.error("Erro durante o cadastro:", error);
             if (error.response && error.response.status === 404) {
@@ -120,28 +121,27 @@ const Projetos = () => {
 
     return (
         <div className='fundo-projetos'>
-            <Head link="" estilo="person" nome={nameUser}/>
-            
-            <main className="container-fluid d-flex flex-colunm align-items-center justify-content-center painel">
-                <div className="boards-page-board-section d-flex flex-row">
-                    <div className="boards-page-board-section-header" >
-                        <h1>Seus Projetos :</h1>
-                        {projects.map((project) => (
-                            <card key={project.id_project} style={{ marginBottom: 20 }}>
-                                <div className="cards-container">
-                                    <div className="card">
-                                        <div className="card-body">
-                                            <h5 className='card-title'>{project.name_project}</h5>
-                                            <p className='card-resume'>Status: {project.status_project}</p>
-                                            <p className="card-text">{project.resume_project}</p>
-                                            <Button variant="outlined" color="primary" onClick={() => handleOpen(project)}>
-                                                Ver detalhes
-                                            </Button>
-                                        </div>
-                                    </div>
+            <Head link="" estilo="person" nome={nameUser} />
+
+            <main className="">
+                {this.state.meusProjetos.map((card, index) => (
+                    <div key={index} className='card-wrapperd'>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{card.title}</h5>
+                                <p class="card-text">{card.content}</p>
+                                <div className="d-flex">
+                                    <Link to={`/card/${index}`} className="btn btn-primary card-button mr-2">Read More</Link>
+                                    <button className="btn btn-danger card-button" onClick={() => this.deleteMeusProjetosCard(index)}>Delete</button>
                                 </div>
-                            </card>
-                        ))}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+                <div className="">
+                    <div className="" >
+                        <h1>Seus Projetos :</h1>
+
                         <button className='btn-addCard' onClick={handleOpenCriacao}>+</button>
                     </div>
                 </div>
