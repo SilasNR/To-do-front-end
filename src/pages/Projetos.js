@@ -123,25 +123,26 @@ const Projetos = () => {
         <div className='fundo-projetos'>
             <Head link="" estilo="person" nome={nameUser} />
 
-            <main className="">
-                {this.state.meusProjetos.map((card, index) => (
-                    <div key={index} className='card-wrapperd'>
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{card.title}</h5>
-                                <p class="card-text">{card.content}</p>
-                                <div className="d-flex">
-                                    <Link to={`/card/${index}`} className="btn btn-primary card-button mr-2">Read More</Link>
-                                    <button className="btn btn-danger card-button" onClick={() => this.deleteMeusProjetosCard(index)}>Delete</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-                <div className="">
-                    <div className="" >
+            <main className="container-fluid d-flex flex-colunm align-items-center justify-content-center painel">
+                <div className="boards-page-board-section d-flex flex-row">
+                    <div className="boards-page-board-section-header" >
                         <h1>Seus Projetos :</h1>
-
+                        {projects.map((project) => (
+                            <card key={project.id_project} style={{ marginBottom: 20 }}>
+                                <div className="cards-container">
+                                    <div className="card">
+                                        <div className="card-body">
+                                            <h5 className='card-title'>{project.name_project}</h5>
+                                            <p className='card-resume'>Status: {project.status_project}</p>
+                                            <p className="card-text">{project.resume_project}</p>
+                                            <Button variant="outlined" color="primary" onClick={() => handleOpen(project)}>
+                                                Ver detalhes
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </card>
+                        ))}
                         <button className='btn-addCard' onClick={handleOpenCriacao}>+</button>
                     </div>
                 </div>
@@ -179,7 +180,7 @@ const Projetos = () => {
                 </Box>
             </Modal>
 
-            {/* <Modal open={open} onClose={handleClose}>
+            <Modal open={open} onClose={handleClose}>
                 <Box sx={{ width: 400, p: 4, bgcolor: 'background.paper', margin: 'auto', marginTop: '10%' }}>
                     {selectedProject && (
                         <div>
@@ -198,7 +199,7 @@ const Projetos = () => {
                         </div>
                     )}
                 </Box>
-            </Modal> */}
+            </Modal>
         </div>
     );
 };
